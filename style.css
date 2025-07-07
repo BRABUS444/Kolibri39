@@ -1,74 +1,69 @@
 
-* {
+body {
+    font-family: Arial, sans-serif;
+    background-color: #defee2;
+    color: #222;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #e6f9e6;
-    color: #222;
-    line-height: 1.6;
 }
 
 header {
-    background-color: #a4d4a4;
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    background-color: #a4dca4;
+    text-align: center;
+    padding: 10px 0;
 }
 
 .logo {
-    font-size: 1.5em;
+    font-size: 28px;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .menu {
-    list-style: none;
     display: flex;
-    gap: 1em;
-}
-
-.menu li {
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .menu a {
     text-decoration: none;
-    color: #000;
+    color: #222;
     font-weight: bold;
+    position: relative;
 }
 
-.dropdown-menu {
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
+    background-color: #c7f7cc;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
     top: 100%;
     left: 0;
-    background-color: #d3f0d3;
-    padding: 0.5em 1em;
-    list-style: none;
-    z-index: 1000;
-    width: max-content;
+    padding: 10px;
+    min-width: 200px;
+    text-align: left;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown-content a {
+    display: block;
+    padding: 5px 10px;
+    color: #000;
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
 }
 
-.dropdown-menu li {
-    margin: 0.3em 0;
-}
-
 main {
-    padding: 2em;
+    padding: 20px;
 }
 
-footer {
-    text-align: center;
-    padding: 1em;
-    background-color: #a4d4a4;
-    margin-top: 2em;
+h2, h3 {
+    color: #0b3d0b;
 }
