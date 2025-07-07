@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Колибри — магазин косметики</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: #f4fff4;
+      color: #333;
+    }
+    header {
+      background-color: #b2d8b2;
+      padding: 1em;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 0.5em;
+      color: #2f4f2f;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      padding: 0.5em;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    nav a:hover {
+      background-color: #d1f0d1;
+    }
+    .hero {
+      background: url('kolibri-hero.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2em;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .section {
+      padding: 2em;
+    }
+    .category-menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      justify-content: center;
+      margin-bottom: 1.5em;
+    }
+    .category-menu button {
+      background: #6bb76b;
+      border: none;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .category-menu button:hover {
+      background: #4f9e4f;
+    }
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1em;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card-content {
+      padding: 1em;
+    }
+    .card-content button {
+      margin-top: 1em;
+      background: #6bb76b;
+      border: none;
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .card-content button:hover {
+      background: #4f9e4f;
+    }
+    @media (max-width: 600px) {
+      .hero {
+        font-size: 1.5em;
+        height: 200px;
+        text-align: center;
+        padding: 1em;
+      }
+      nav a {
+        display: block;
+        margin: 0.3em auto;
+      }
+      .category-menu {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Колибри</h1>
+    <nav>
+      <a href="#about">О нас</a>
+      <a href="#catalog">Каталог</a>
+      <a href="#photos">Фото</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    Добро пожаловать в магазин «Колибри»
+  </div>
+
+  <section id="about" class="section">
+    <h2>О магазине</h2>
+    <p>В нашем магазине вы найдете для себя много разнообразной косметики: Беларусь, Польша, Янтарная, декоративная и профессиональная для волос 🛍️ Всегда в наличии парфюмерная вода и духи. А также у нас представлены чокеры и браслеты ручной работы ✨🫶</p>
+  </section>
+
+  <section id="catalog" class="section">
+    <h2>Каталог товаров</h2>
+
+    <div class="category-menu">
+      <button>Янтарная косметика</button>
+      <button>Декоративная косметика</button>
+      <button>Польская косметика</button>
+      <button>Белорусская косметика</button>
+      <button>Маникюрные принадлежности</button>
+      <button>Парфюм</button>
+      <button>Изделия ручной работы</button>
+      <button>Солнцезащитные средства</button>
+      <button>Расчески</button>
+    </div>
+
+    <div class="catalog">
+      <div class="card">
+        <img src="product1.jpg" alt="Янтарная косметика">
+        <div class="card-content">
+          <h3>Янтарная косметика</h3>
+          <p>Натуральная косметика на основе янтаря для ухода за кожей.</p>
+          <button>Подробнее</button>
+        </div>
+      </div>
+      <div class="card">
+        <img src="product2.jpg" alt="Польская косметика">
+        <div class="card-content">
+          <h3>Польская косметика</h3>
+          <p>Качественная косметика от ведущих польских брендов.</p>
+          <button>Подробнее</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" class="section">
+    <h2>Фото магазина</h2>
+    <img src="shop-photo1.jpg" alt="Фото магазина" style="width:100%; max-width:600px;">
+  </section>
+
+  <section id="reviews" class="section reviews">
+    <h2>Отзывы</h2>
+    <textarea placeholder="Напишите ваш отзыв..."></textarea><br>
+    <button>Отправить</button>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Контакты</h2>
+    <p><strong>Телефон:</strong> +7 911 459 4712</p>
+    <p><strong>Email:</strong> Kolibri.39@yandex.com</p>
+    <p><strong>Адрес:</strong> улица Ленина, 1А, Зеленоградск, Калининградская область</p>
+    <h3>Мы на карте</h3>
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adfabcab70872a4b91c6c6c9935e5f5eb9c205b86aa82c6aa74f7799de8c9d2f6&amp;source=constructor" frameborder="0" width="100%" height="400"></iframe>
+  </section>
+
+  <footer style="text-align:center; padding:1em; background:#b2d8b2;">
+    <p>&copy; 2025 Колибри. Все права защищены.</p>
+  </footer>
+</body>
+</html>
