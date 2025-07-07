@@ -1,71 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Колибри — Магазин косметики</title>
-    <link rel="stylesheet" href="styles.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Колибри</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <div class="logo">Колибри</div>
-        <nav>
-            <ul>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#products">Товары</a></li>
-                <li><a href="#reviews">Отзывы</a></li>
-                <li><a href="#contacts">Контакты</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <div class="container">
+      <h1>Колибри</h1>
+      <nav>
+        <ul>
+          <li><a href="#">О нас</a></li>
+          <li><a href="#">Товары</a></li>
+          <li><a href="#">Отзывы</a></li>
+          <li><a href="#">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Колибри</h1>
-            <p>Магазин натуральной и декоративной косметики</p>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="overlay">
+      <h2>Колибри</h2>
+      <p>Магазин натуральной и декоративной косметики</p>
+    </div>
+  </section>
 
-    <section id="about" class="fade-in">
-        <h2>О нас</h2>
-        <p>Магазин "Колибри" предлагает широкий ассортимент качественной натуральной и декоративной косметики из Европы и СНГ.</p>
-        <img src="images/about.png" alt="О магазине"/>
-    </section>
+  <section class="about">
+    <div class="container">
+      <h2>О нас</h2>
+      <p>Мы предлагаем лучшие средства по уходу за кожей и волосами, духи, а также эксклюзивную белорусскую косметику.</p>
+    </div>
+  </section>
 
-    <section id="products" class="fade-in">
-        <h2>Категории товаров</h2>
-        <div class="product-grid">
-            <div class="card">Декоративная косметика</div>
-            <div class="card">Натуральная косметика</div>
-            <div class="card">Белорусская косметика</div>
-            <div class="card">Парфюмерия</div>
-        </div>
-    </section>
-
-    <section id="reviews" class="fade-in">
-        <h2>Отзывы</h2>
-        <p>Наши покупатели довольны качеством и обслуживанием!</p>
-    </section>
-
-    <section id="contacts" class="fade-in">
-        <h2>Контакты</h2>
-        <p>г. Минск, ул. Примерная, 10<br/>Тел: +375 (29) 123-45-67</p>
-    </section>
-
-    <footer>
-        <p>© 2025 Колибри</p>
-    </footer>
-
-    <script>
-        // Анимация при прокрутке
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
+  <footer>
+    <p>&copy; 2025 Колибри. Все права защищены.</p>
+  </footer>
 </body>
 </html>
