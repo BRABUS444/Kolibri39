@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отзывы | Колибри</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Колибри</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">О нас</a></li>
+        <li>
+          <a href="#">Товары</a>
+          <ul class="dropdown-content">
+            <li><a href="yantarnaya.html">Янтарная косметика</a></li>
+            <li><a href="dekorativnaya.html">Декоративная косметика</a></li>
+            <li><a href="polskaya.html">Польская косметика</a></li>
+            <li><a href="belorusskaya.html">Белорусская косметика</a></li>
+            <li><a href="manicure.html">Маникюрные принадлежности</a></li>
+            <li><a href="parfum.html">Парфюм</a></li>
+            <li><a href="handmade.html">Ручная работа</a></li>
+            <li><a href="sun.html">Солнцезащитные средства</a></li>
+            <li><a href="combs.html">Расчески</a></li>
+          </ul>
+        </li>
+        <li><a href="reviews.html">Отзывы</a></li>
+        <li><a href="contacts.html">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="leave-review">
+      <h2>Оставить отзыв</h2>
+      <form class="review-form">
+        <label for="name">Ваше имя:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email (не обязательно):</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Ваш отзыв:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Отправить отзыв</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Магазин «Колибри», Зеленоградск</p>
+  </footer>
+  <script src="reviews.js"></script>
+</body>
+</html>

@@ -149,3 +149,12 @@ button:hover,
 .review-form button:hover {
   transform: scale(1.05);
 }
+
+
+.review-entry {
+  border-bottom: 1px solid #ccc;
+  padding: 0.5em 0;
+}
+#reviews-display {
+  margin-top: 2em;
+}
