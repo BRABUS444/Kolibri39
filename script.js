@@ -1,11 +1,10 @@
-
 async function loadReviews() {
     const res = await fetch('reviews.json');
     const reviews = await res.json();
     const container = document.getElementById('reviews');
     container.innerHTML = '<h2>Оставленные отзывы:</h2>';
     for (const r of reviews) {
-        container.innerHTML += `<p><strong>${r.name}:</strong> ${r.text}</p>`;
+        container.innerHTML += `<p><strong>${r.name}:</strong> ${r.text} <small>(id: ${r.id})</small></p>`;
     }
 }
 

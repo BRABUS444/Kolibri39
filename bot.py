@@ -1,15 +1,14 @@
-
 import json
 import telebot
 
 API_TOKEN = 'YOUR_BOT_TOKEN'
-ADMIN_IDS = [123456789]  # Замените на ваш user_id
+ADMIN_IDS = [123456789]  # Замените на ваш Telegram user_id
 
 bot = telebot.TeleBot(API_TOKEN)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.send_message(message.chat.id, "Добро пожаловать!")
+    bot.send_message(message.chat.id, "Добро пожаловать! Доступные команды: /delete <id>")
 
 @bot.message_handler(commands=['delete'])
 def delete_review(message):
@@ -25,9 +24,14 @@ def delete_review(message):
 
     with open('reviews.json', 'r', encoding='utf-8') as f:
         reviews = json.load(f)
-    reviews = [r for r in reviews if r['id'] != review_id]
+    new_reviews = [r for r in reviews if r['id'] != review_id]
+
+    if len(new_reviews) == len(reviews):
+        bot.send_message(message.chat.id, f"Отзыв с id {review_id} не найден.")
+        return
+
     with open('reviews.json', 'w', encoding='utf-8') as f:
-        json.dump(reviews, f, ensure_ascii=False, indent=2)
-    bot.send_message(message.chat.id, f"Отзыв #{review_id} удалён.")
+        json.dump(new_reviews, f, ensure_ascii=False, indent=2)
+    bot.send_message(message.chat.id, f"Отзыв с id {review_id} удалён.")
 
 bot.polling()
