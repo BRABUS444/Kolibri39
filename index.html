@@ -1,43 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Магазин Колибри</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <title>Отзывы о магазине "Колибри"</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Колибри</h1>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">О нас</a></li>
-        <li class="dropdown">
-          <a href="catalog.html">Товары</a>
-          <ul class="dropdown-content">
-            <li><a href="categories/amber.html">Янтарная косметика</a></li>
-            <li><a href="categories/decorative.html">Декоративная косметика</a></li>
-            <li><a href="categories/polish.html">Польская косметика</a></li>
-            <li><a href="categories/belarus.html">Белорусская косметика</a></li>
-            <li><a href="categories/manicure.html">Маникюрные принадлежности</a></li>
-            <li><a href="categories/parfum.html">Парфюм</a></li>
-            <li><a href="categories/handmade.html">Ручная работа</a></li>
-            <li><a href="categories/sun.html">Солнцезащитные средства</a></li>
-            <li><a href="categories/combs.html">Расчески</a></li>
-          </ul>
-        </li>
-        <li><a href="reviews.html">Отзывы</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="about">
-      <h2>О магазине</h2>
-      <p>В нашем магазине вы найдете для себя много разнообразной косметики: Беларусь, Польша, Янтарная, декоративная и профессиональная для волос 🛍️<br>
-         Всегда в наличии парфюмерная вода и духи. А также у нас представлены чокеры и браслеты ручной работы ✨🫶</p>
-    </section>
-  </main>
+    <h1>Отзывы о магазине "Колибри"</h1>
+    <div class="form">
+        <input type="text" id="name" placeholder="Ваше имя"><br>
+        <textarea id="review" placeholder="Ваш отзыв"></textarea><br>
+        <button onclick="submitReview()">Отправить отзыв</button>
+    </div>
+    <div class="reviews" id="reviews"></div>
+    <script src="script.js"></script>
 </body>
 </html>
