@@ -1,58 +1,133 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Отзывы | Колибри</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Отзывы — Колибри</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e0f5e7;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2e5f3e;
+      margin-bottom: 30px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .review-list {
+      margin-top: 30px;
+    }
+    .review-item {
+      background: #f9f9f9;
+      border-left: 4px solid #4caf50;
+      padding: 10px 15px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .review-item strong {
+      color: #2e5f3e;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Колибри</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">О нас</a></li>
-        <li>
-          <a href="#">Товары</a>
-          <ul class="dropdown-content">
-            <li><a href="yantarnaya.html">Янтарная косметика</a></li>
-            <li><a href="dekorativnaya.html">Декоративная косметика</a></li>
-            <li><a href="polskaya.html">Польская косметика</a></li>
-            <li><a href="belorusskaya.html">Белорусская косметика</a></li>
-            <li><a href="manicure.html">Маникюрные принадлежности</a></li>
-            <li><a href="parfum.html">Парфюм</a></li>
-            <li><a href="handmade.html">Ручная работа</a></li>
-            <li><a href="sun.html">Солнцезащитные средства</a></li>
-            <li><a href="combs.html">Расчески</a></li>
-          </ul>
-        </li>
-        <li><a href="reviews.html">Отзывы</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="container">
+    <h1>Отзывы о магазине «Колибри»</h1>
+    <form id="reviewForm">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <textarea id="review" placeholder="Ваш отзыв" rows="4" required></textarea>
+      <button type="submit">Оставить отзыв</button>
+    </form>
 
-  <main>
-    <section id="leave-review">
-      <h2>Оставить отзыв</h2>
-      <form class="review-form">
-        <label for="name">Ваше имя:</label>
-        <input type="text" id="name" name="name" required>
+    <div class="review-list" id="reviewList"></div>
+  </div>
 
-        <label for="email">Email (не обязательно):</label>
-        <input type="email" id="email" name="email">
+  <script>
+    const TELEGRAM_TOKEN = "8064299597:AAEeb2KshXyw3cMGojybx2J00OToWX0W9fc";
+    const CHAT_ID = "1808215493";
 
-        <label for="message">Ваш отзыв:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+    const form = document.getElementById("reviewForm");
+    const nameInput = document.getElementById("name");
+    const reviewInput = document.getElementById("review");
+    const reviewList = document.getElementById("reviewList");
 
-        <button type="submit">Отправить отзыв</button>
-      </form>
-    </section>
-  </main>
+    function saveReviewToLocal(name, review) {
+      const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+      reviews.push({ name, review });
+      localStorage.setItem("reviews", JSON.stringify(reviews));
+    }
 
-  <footer>
-    <p>Магазин «Колибри», Зеленоградск</p>
-  </footer>
-  <script src="reviews.js"></script>
+    function renderReviews() {
+      const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+      reviewList.innerHTML = "";
+      reviews.forEach(r => {
+        const div = document.createElement("div");
+        div.className = "review-item";
+        div.innerHTML = `<strong>${r.name}</strong><br>${r.review}`;
+        reviewList.appendChild(div);
+      });
+    }
+
+    function sendToTelegram(name, review) {
+      const message = `📝 Новый отзыв с сайта Колибри:%0A👤 Имя: ${name}%0A💬 Отзыв: ${review}`;
+      const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${message}`;
+      fetch(url);
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const review = reviewInput.value.trim();
+      if (!name || !review) return;
+
+      saveReviewToLocal(name, review);
+      renderReviews();
+      sendToTelegram(name, review);
+
+      nameInput.value = "";
+      reviewInput.value = "";
+    });
+
+    renderReviews();
+  </script>
 </body>
 </html>
