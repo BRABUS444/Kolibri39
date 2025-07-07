@@ -1,1 +1,35 @@
-<!DOCTYPE html><html lang='ru'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width, initial-scale=1.0'><title>Отзывы</title><link rel='stylesheet' href='style.css'><script defer src='script.js'></script></head><body><header><h1>Отзывы</h1><nav><ul class='menu'><li><a href='index.html'>О нас</a></li><li><a href='catalog.html'>Товары</a></li><li><a href='reviews.html'>Отзывы</a></li></ul></nav></header><main><form id='reviewForm'><input type='text' id='name' placeholder='Ваше имя' required><textarea id='review' placeholder='Ваш отзыв' required></textarea><button type='submit'>Отправить отзыв</button></form><h2>Оставленные отзывы:</h2><ul id='reviewsList'></ul></main></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отзывы</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🕊 Колибри</div>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">О нас</a></li>
+        <li><a href="catalog.html">Товары</a></li>
+        <li><a href="reviews.html">Отзывы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Отзывы о магазине "Колибри"</h1>
+    <form id="reviewForm">
+      <input type="text" id="name" placeholder="Ваше имя" required>
+      <textarea id="review" placeholder="Ваш отзыв" required></textarea>
+      <button type="submit">Отправить отзыв</button>
+    </form>
+    <h2>Оставленные отзывы:</h2>
+    <ul id="reviewsList"></ul>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
