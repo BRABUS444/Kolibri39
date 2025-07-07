@@ -1,55 +1,120 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Колибри — магазин косметики</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Отзывы - Колибри</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #d7f3db;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2e5f3e;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .reviews {
+            max-width: 600px;
+            margin: 30px auto;
+            background: #ffffffcc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .review-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+    </style>
 </head>
 <body>
+    <h1>Отзывы о магазине "Колибри"</h1>
+    <form id="reviewForm">
+        <input type="text" id="name" placeholder="Ваше имя" required />
+        <textarea id="review" placeholder="Ваш отзыв" rows="4" required></textarea>
+        <button type="submit">Отправить отзыв</button>
+    </form>
 
-<header>
-  <h1 style="text-align:center;">Колибри</h1>
-  <nav>
-    <ul>
-      <li><a href="/index.html">О нас</a></li>
-      <li>
-        <a href="#">Товары</a>
-        <ul class="dropdown-content">
-          <li><a href="/categories/amber.html">Янтарная косметика</a></li>
-          <li><a href="/categories/decorative.html">Декоративная косметика</a></li>
-          <li><a href="/categories/polish.html">Польская косметика</a></li>
-          <li><a href="/categories/belarus.html">Белорусская косметика</a></li>
-          <li><a href="/categories/manicure.html">Маникюрные принадлежности</a></li>
-          <li><a href="/categories/perfume.html">Парфюм</a></li>
-          <li><a href="/categories/handmade.html">Ручная работа</a></li>
-          <li><a href="/categories/sun.html">Солнцезащитные средства</a></li>
-          <li><a href="/categories/combs.html">Расчески</a></li>
-        </ul>
-      </li>
-      <li><a href="#reviews">Отзывы</a></li>
-      <li><a href="#contact">Контакты</a></li>
-    </ul>
-  </nav>
-</header>
+    <div class="reviews" id="reviewsList">
+        <h2>Оставленные отзывы:</h2>
+    </div>
 
-<main>
-  <section>
-    <h2>О нас</h2>
-    <p>В нашем магазине вы найдете для себя много разнообразной косметики: Беларусь, Польша, Янтарная, декоративная и профессиональная для волос 🛍️
-    Всегда в наличии парфюмерная вода и духи. А также у нас представлены чокеры и браслеты ручной работы ✨🫶</p>
-  </section>
+    <script>
+        const token = "8064299597:AAEeb2KshXyw3cMGojybx2J00OToWX0W9fc";
+        const chatId = "1808215493";
 
-  <section id="reviews">
-    <h2>Отзывы</h2>
-    <p>Здесь будут отзывы покупателей. Вы можете оставить свой отзыв, написав нам на email.</p>
-  </section>
+        const form = document.getElementById("reviewForm");
+        const reviewsList = document.getElementById("reviewsList");
 
-  <section id="contact">
-    <h2>Контакты</h2>
-    <p>📞 +7 911 459 4712<br>📧 Kolibri.39@yandex.com<br>📍 улица Ленина, 1А, Зеленоградск, Калининградская область</p>
-    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adummy&amp;source=constructor" width="100%" height="300" frameborder="0"></iframe>
-  </section>
+        function loadReviews() {
+            const reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
+            reviewsList.innerHTML = "<h2>Оставленные отзывы:</h2>";
+            reviews.forEach(r => {
+                const div = document.createElement("div");
+                div.className = "review-item";
+                div.textContent = `${r.name}: ${r.text}`;
+                reviewsList.appendChild(div);
+            });
+        }
 
-  </main>
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const review = document.getElementById("review").value.trim();
+
+            if (name && review) {
+                const newReview = { name, text: review };
+                const saved = JSON.parse(localStorage.getItem("reviews") || "[]");
+                saved.push(newReview);
+                localStorage.setItem("reviews", JSON.stringify(saved));
+                loadReviews();
+
+                const message = `📝 Новый отзыв с сайта Колибри:
+👤 Имя: ${name}
+💬 Отзыв: ${review}`;
+                fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message
+                    })
+                });
+
+                form.reset();
+            }
+        });
+
+        loadReviews();
+    </script>
 </body>
 </html>
