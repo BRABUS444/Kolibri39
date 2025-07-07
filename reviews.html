@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Отзывы о магазине Колибри</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Отзывы - Колибри</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Отзывы о магазине "Колибри"</h1>
-  </header>
-  <main>
-    <form action="#" method="POST">
-      <input type="text" name="name" placeholder="Ваше имя" required><br>
-      <textarea name="message" placeholder="Ваш отзыв" required></textarea><br>
-      <button type="submit">Отправить отзыв</button>
-    </form>
-    <div class="reviews">
-      <h2>Оставленные отзывы:</h2>
-      <p>Nikita: Топ</p>
+<header>
+    <div class="logo">🌿 Колибри</div>
+    <nav>
+        <ul class="menu">
+            <li><a href="index.html">О нас</a></li>
+            <li class="dropdown">
+                <a href="#">Товары</a>
+                <ul class="submenu">
+                    <li><a href="amber.html">Янтарная косметика</a></li>
+                    <li><a href="decorative.html">Декоративная косметика</a></li>
+                    <li><a href="polish.html">Польская косметика</a></li>
+                    <li><a href="belarus.html">Белорусская косметика</a></li>
+                    <li><a href="manicure.html">Маникюрные принадлежности</a></li>
+                    <li><a href="perfume.html">Парфюм</a></li>
+                    <li><a href="handmade.html">Ручная работа</a></li>
+                    <li><a href="sun.html">Солнцезащитные средства</a></li>
+                    <li><a href="combs.html">Расчески</a></li>
+                </ul>
+            </li>
+            <li><a href="reviews.html">Отзывы</a></li>
+            <li><a href="index.html#contacts">Контакты</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Отзывы</h1>
+    <div class="form">
+        <input type="text" id="name" placeholder="Ваше имя"><br>
+        <textarea id="review" placeholder="Ваш отзыв"></textarea><br>
+        <button onclick="submitReview()">Отправить отзыв</button>
     </div>
-  </main>
+    <div class="reviews" id="reviews"></div>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>

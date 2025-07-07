@@ -1,16 +1,57 @@
 body {
-    background-color: #defbe0;
-    font-family: sans-serif;
-    text-align: center;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0fff0;
 }
-.form, .reviews {
-    background: #fff;
-    margin: 20px auto;
+header {
+    background-color: #a8e6cf;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+.menu > li {
+    position: relative;
+}
+.menu a {
+    text-decoration: none;
+    color: #000;
+}
+.submenu {
+    display: none;
+    position: absolute;
+    background: #dcedc1;
+    top: 100%;
+    left: 0;
+    list-style: none;
+    padding: 10px;
+}
+.dropdown:hover .submenu {
+    display: block;
+}
+.submenu li {
+    margin: 5px 0;
+}
+main {
     padding: 20px;
-    max-width: 500px;
+}
+.shop-photo {
+    width: 300px;
+    margin-top: 10px;
     border-radius: 8px;
 }
-input, textarea {
-    width: 90%;
-    margin: 10px 0;
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #a8e6cf;
+    margin-top: 20px;
 }
