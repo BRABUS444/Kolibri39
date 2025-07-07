@@ -1,75 +1,87 @@
-
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #e4f7e8;
-  color: #111;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    scroll-behavior: smooth;
 }
-
 header {
-  background-color: #a6dba6;
-  padding: 10px 0;
-  border-bottom: 2px solid #5e9c5e;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
-
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #0b3d0b;
-  margin-bottom: 5px;
+header .logo {
+    font-weight: bold;
+    font-size: 24px;
 }
-
-.nav-center {
-  display: flex;
-  justify-content: center;
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
-
-.menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
-
-.menu > li {
-  position: relative;
+.hero {
+    height: 100vh;
+    background: url('images/hero-bg.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
-
-.menu a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
+.hero-content {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 12px;
 }
-
-.submenu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #def7dc;
-  list-style: none;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  min-width: 200px;
+section {
+    padding: 100px 40px;
+    background-color: #1e1e1e;
 }
-
-.submenu li {
-  padding: 5px 0;
+section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
 }
-
-.dropdown:hover .submenu {
-  display: block;
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
-
-main {
-  padding: 30px;
-  max-width: 900px;
-  margin: auto;
+.card {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.05);
+    background-color: #444;
+}
+footer {
+    padding: 40px;
+    text-align: center;
+    background-color: #111;
+}
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
 }
