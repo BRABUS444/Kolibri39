@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Колибри — косметика</title>
+<link href="style-final.css" rel="stylesheet"/>
+<style>html { scroll-behavior: smooth; }</style>
+
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 250px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.3);
+  z-index: 1;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.dropdown-content a {
+  color: #074a32;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-weight: bold;
+}
+.dropdown-content a:hover {
+  background-color: #e6f7ed;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+
+
+<style>
+/* Обеспечим поддержку клика через класс .open */
+.dropdown-content {
+  display: none;
+}
+.dropdown.open .dropdown-content {
+  display: block;
+}
+</style>
+
+
+<style>
+/* Убираем затемнение фона при переходе по якорю */
+section:target {
+  background-color: transparent !important;
+  filter: none !important;
+}
+
+/* Центрируем выпадающее меню на телефоне */
+@media (max-width: 768px) {
+  .dropdown-content {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    text-align: center;
+    min-width: 260px;
+    border-radius: 10px;
+  }
+
+  .dropdown-content a {
+    font-size: 18px;
+    padding: 14px 12px;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="background-overlay"></div>
+<style>
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('images/XXXL.webp') center/cover no-repeat;
+  z-index: -1;
+}
+</style>
+
+<div class="hero">
+<div class="overlay"></div>
+<div class="content">
+<h1 class="fade-in">Колибри</h1>
+<p class="fade-in delay-1">Магазин натуральной и декоративной косметики</p>
+<nav class="fade-in delay-2">
+<a href="#about">О нас</a>
+
+<div class="dropdown">
+  <a href="#">Товары</a>
+  <div class="dropdown-content">
+    <a href="categories/amber.html">Янтарная косметика</a>
+    <a href="categories/decorative.html">Декоративная косметика</a>
+    <a href="categories/polish.html">Польская косметика</a>
+    <a href="categories/belarusian.html">Белорусская косметика</a>
+    <a href="categories/manicure.html">Маникюрные принадлежности</a>
+    <a href="categories/perfume.html">Парфюм</a>
+    <a href="categories/handmade.html">Изделия ручной работы</a>
+    <a href="categories/sun.html">Солнцезащитные средства</a>
+    <a href="categories/combs.html">Расчески</a>
+  </div>
+</div>
+
+<a href="#reviews">Отзывы</a>
+<a href="#contacts">Контакты</a>
+</nav>
+</div>
+</div>
+<script src="script.js"></script>
+<section id="about" style="height: 100vh;"><h2>О нас</h2><p>Информация о магазине Колибри.</p></section>
+
+
+<section id="reviews" class="section" style="min-height: 60vh; background-color: rgba(0,0,0,0.85); padding: 40px 20px;">
+  <h2 style="text-align:center; color:#fff;">Отзывы</h2>
+  <div style="max-width: 800px; margin: 0 auto; color:#fff;">
+    <p>🌸 Очень довольна обслуживанием и качеством! Спасибо магазину "Колибри".</p>
+    <p>✨ Заказываю косметику здесь уже 2 года — всё всегда свежайшее и по приятным ценам!</p>
+    <p>🛍️ Удобное расположение, отзывчивый персонал и много интересного ассортимента.</p>
+  </div>
+</section>
+
+
+<section id="contact" style="height: 100vh;"><h2>Контакты</h2><p>Связаться с нами можно через мессенджеры и соцсети.</p></section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const dropdown = document.querySelector(".dropdown");
+  if (dropdown) {
+    dropdown.addEventListener("click", function(e) {
+      e.stopPropagation();
+      this.classList.toggle("open");
+    });
+
+    document.addEventListener("click", function() {
+      dropdown.classList.remove("open");
+    });
+  }
+});
+</script>
+
+</body>
+</html>
